@@ -1,29 +1,57 @@
-# Welcome to your Lovable project
+# Maison Vale
 
-This project was built with [Lovable](https://lovable.dev).
+> **Handmade rings, bespoke mechanical watches and hand-stitched leather watch straps.**
 
-## Build with Lovable
+Developed by **Md Mahbubur Rahman**.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+---
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Overview
 
-## Development
+Maison Vale is an artisan atelier showcase web application designed for a luxury studio specializing in handcrafted jewelry, bespoke mechanical timepieces, and hand-stitched leather watch straps.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### Key Features
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+- **Full responsive design**: Tailored with responsive WebP image sets, fluid typography, and warm obsidian/champagne luxury aesthetic.
+- **Product catalog**: Typed product collection with interactive category filtering (Rings, Bespoke Watches, Leather Straps).
+- **Lightbox**: Portal-rendered image inspection for rings and timepieces.
+- **Static deployment ready**: Pre-rendered static pages with automated image resolution, custom vector favicons, and Apache `.htaccess` rewrite rules.
+
+---
+
+## Tech Stack
+
+- **Framework**: [TanStack Start](https://tanstack.com/start) & [TanStack Router](https://tanstack.com/router)
+- **UI & Styling**: [React 19](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Build Tool**: [Vite](https://vite.dev/) & [Nitro](https://nitro.build/)
+
+---
+
+## Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/imdevmahbub/maison-vale.git
+cd maison-vale
+
+# Install dependencies
+npm install
+
+# Start local development server
 npm run dev
 ```
 
-## Built with
+### Static Production Build
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+```bash
+# Generate the full static production deployment bundle in dist/
+npm run build:static
+```
+
+---
+
+## License & Credits
+
+- **Design & Concept**: Maison Vale Studio
+- **Developed by**: Md Mahbubur Rahman
