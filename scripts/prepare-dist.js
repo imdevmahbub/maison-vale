@@ -37,10 +37,9 @@ if (fs.existsSync(appPublicDir)) {
   console.log('Copied public/ to dist');
 }
 
-// 3. Copy ALL image assets to BOTH dist/assets AND dist/src/assets
-// CRITICAL: Many web servers/hosts block /src/ requests via ModSecurity.
-// By placing all images directly in dist/assets, and also in dist/src/assets,
-// every single image request succeeds regardless of URL pattern!
+// 3. Copy ALL image assets to dist/assets/, dist/src/assets/, and dist root
+// Triple-redundancy guarantees that regardless of path (/assets/..., assets/..., /src/assets/..., or ./...)
+// every image is guaranteed to load on any host, subdomain, or subfolder!
 const distAssetsDir = path.join(distDir, 'assets');
 const distSrcAssetsDir = path.join(distDir, 'src', 'assets');
 fs.mkdirSync(distAssetsDir, { recursive: true });
@@ -51,8 +50,10 @@ if (fs.existsSync(srcAssetsDir)) {
     const srcFile = path.join(srcAssetsDir, file);
     fs.copyFileSync(srcFile, path.join(distAssetsDir, file));
     fs.copyFileSync(srcFile, path.join(distSrcAssetsDir, file));
+    // Also copy to root of dist for relative root fallback
+    fs.copyFileSync(srcFile, path.join(distDir, file));
   }
-  console.log('Copied all product & hero images to dist/assets/ and dist/src/assets/');
+  console.log('Copied all product & hero images to dist/assets/, dist/src/assets/, and dist/');
 }
 
 // 4. Find compiled CSS and make it available at dist/styles.css and dist/src/styles.css
@@ -99,12 +100,33 @@ const globalFixCss = `
 
 const globalScript = `
 <script>
+// Auto-heal images: if any image fails to load, dynamically try fallback paths
+window.addEventListener('error', function(e) {
+  if (e.target && e.target.tagName === 'IMG') {
+    var img = e.target;
+    var tries = parseInt(img.getAttribute('data-tries') || '0', 10);
+    var src = img.getAttribute('src');
+    if (tries < 3 && src) {
+      img.setAttribute('data-tries', (tries + 1).toString());
+      var filename = src.split('/').pop().split('?')[0];
+      if (tries === 0) {
+        img.src = 'assets/' + filename;
+      } else if (tries === 1) {
+        img.src = 'src/assets/' + filename;
+      } else if (tries === 2) {
+        img.src = filename;
+      }
+    }
+  }
+}, true);
+
 document.addEventListener('DOMContentLoaded', function() {
   // Ensure all images are visible immediately
   document.querySelectorAll('img').forEach(function(img) {
     img.classList.remove('opacity-0');
     img.classList.add('opacity-100');
     img.style.opacity = '1';
+    img.style.visibility = 'visible';
   });
 
   // Reveal elements on scroll
