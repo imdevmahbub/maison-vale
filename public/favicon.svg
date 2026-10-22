@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24211D" />
+      <stop offset="100%" stop-color="#141311" />
+    </linearGradient>
+    <linearGradient id="goldTable" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0CE" />
+      <stop offset="100%" stop-color="#DFBD78" />
+    </linearGradient>
+    <linearGradient id="goldFacetLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4B06A" />
+      <stop offset="100%" stop-color="#A6833D" />
+    </linearGradient>
+    <linearGradient id="goldFacetRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2D79E" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="goldCenterPavilion" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF4D9" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+  </defs>
+
+  <!-- Luxury rounded square badge -->
+  <rect width="64" height="64" rx="15" fill="url(#bgGrad)" />
+  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="13.75" fill="none" stroke="#C5A059" stroke-width="1.2" stroke-opacity="0.35" />
+
+  <!-- Diamond Crown: Table and Side Facets -->
+  <polygon points="23,19 41,19 41,27 23,27" fill="url(#goldTable)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+  <polygon points="23,19 14,27 23,27" fill="url(#goldFacetLeft)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+  <polygon points="41,19 50,27 41,27" fill="url(#goldFacetRight)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+
+  <!-- Diamond Pavilion: Lower Facets meeting at Culet -->
+  <polygon points="23,27 41,27 32,48" fill="url(#goldCenterPavilion)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+  <polygon points="14,27 23,27 32,48" fill="url(#goldFacetLeft)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+  <polygon points="41,27 50,27 32,48" fill="url(#goldFacetRight)" stroke="#FFF9EB" stroke-width="0.75" stroke-linejoin="round" />
+
+  <!-- Diamond Brilliant Sparkle -->
+  <path d="M47,15 C47,17 49,18 51,18 C49,18 47,19 47,21 C47,19 45,18 43,18 C45,18 47,17 47,15 Z" fill="#FFFDF5" />
+  <circle cx="47" cy="18" r="0.8" fill="#FFF" />
+</svg>
